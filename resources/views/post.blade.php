@@ -6,6 +6,6 @@
             <h2 class="text-2xl font-bold mb-2">{{ $post['title'] }}</h2>
         </a>
         <p class="text-gray-600 text-sm mb-2">{{ $post['body'] }}</p>
-        <a href="/blogs" class="text-indigo-500 text-sm hover:underline">&larr; Back to Blogs</a>
+        <a href="/posts" class="text-indigo-500 text-sm hover:underline">&larr; Back</a>
     </article>
 </x-layout>
