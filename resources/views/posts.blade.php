@@ -7,8 +7,12 @@
                 <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
             </a>
             <div class="flex gap-2 items-center text-base text-gray-600 mb-2 mt-1">
-                <a href="/authors/{{ $post->author->id }}" class="text-sm hover:underline">By
-                    {{ $post->author->name }}</a> |
+                <a href="/authors/{{ $post->author->username }}" class="text-sm font-semibold hover:underline">By
+                    {{ $post->author->name }}</a>
+                <span class="text-sm">in</span>
+                <a href="/categories/{{ $post->category->slug }}"
+                    class="text-sm font-semibold hover:underline">{{ $post->category->name }}</a>
+                <span class="text-sm">|</span>
                 <p class="text-sm"> {{ $post->created_at->diffForHumans() }}</p>
             </div>
             <p class="text-gray-600 text-sm mb-2">{{ Str::limit($post->body, 270) }}</p>
