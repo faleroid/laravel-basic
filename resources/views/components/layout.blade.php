@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-white dark:bg-gray-950 scheme-light dark:scheme-dark">
+<html lang="en" class="bg-white dark:bg-gray-950 dark scheme-light dark:scheme-dark">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,8 @@
 <body class="h-full">
     <script src=" https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module">
     </script>
+    @yield('content')
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 
     <div class="min-h-full">
         <x-navbar />

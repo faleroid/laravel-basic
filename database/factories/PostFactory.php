@@ -22,7 +22,7 @@ class PostFactory extends Factory
             "title" => fake()->sentence(),
             "author_id" => User::factory(),
             "category_id" => Category::factory(),
-            "body" => fake()->paragraph(),
+            "body" => fake()->paragraph(50),
             "slug" => Str::slug(fake()->sentence()),
         ];
     }
