@@ -1,16 +1,17 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
+    <x-search-bar />
 
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-6 lg:px-2">
         <div class="grid gap-8 lg:grid-cols-2">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <article
-                    class="flex-col justify-between flex p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-900 dark:border-gray-700">
+                    class="flex-col justify-between p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-900 dark:border-gray-700">
                     <div class="flex justify-between items-center mb-5 text-gray-500">
-                        <span
-                            class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                        <a href="/posts?category={{ $post->category->slug }}"
+                            class="hover:bg-primary-100 bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                             {{ $post->category->name }}
-                        </span>
+                        </a>
                         <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                     </div>
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:underline"><a
@@ -18,7 +19,7 @@
                     <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post->body, 200) }}.</p>
                     <div class="flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <a href="/authors/{{ $post->author->username }}"
+                            <a href="/posts?author={{ $post->author->username }}"
                                 class="font-medium dark:text-white hover:underline">
                                 {{ $post->author->name }}
                             </a>
@@ -35,7 +36,9 @@
                         </a>
                     </div>
                 </article>
-            @endforeach
+            @empty
+                <p class="text-center text-gray-500 text-xl col-span-full mt-30">No posts found.</p>
+            @endforelse
         </div>
     </div>
 </x-layout>

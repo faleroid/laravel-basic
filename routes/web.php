@@ -10,9 +10,11 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
+    $posts = Post::latest();
+
     return view('posts', [
         'title' => 'Blog',
-        'posts' => Post::all(),
+        'posts' => $posts->filter(request(['search', 'category', 'author']))->latest()->get(),
     ]);
 });
 
